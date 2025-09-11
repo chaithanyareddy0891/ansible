@@ -1,0 +1,16 @@
+---
+- name: install packages in loop
+  hosts:  all
+  vars:
+    install_list:
+      - httpd
+      - git
+      - tree
+      - docker
+  become: true
+  tasks:
+    - name: install multiple packages at a time
+      yum:
+        name: "{{ item }}"
+        state:  installed
+      loop: "{{ install_list }}"
