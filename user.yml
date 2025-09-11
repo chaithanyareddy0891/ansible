@@ -1,0 +1,14 @@
+---
+- name: create user
+  hosts:  all
+  become: true
+  tasks:
+    - name: create user
+      user:
+        name: sandhya
+        state: present
+
+    - name: add user to group
+      user:
+        name: sandhya
+        groups: wheel
